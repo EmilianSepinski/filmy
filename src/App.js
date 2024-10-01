@@ -1,32 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
 import React, { useState } from 'react';
 import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.css';
 function App() {
-
   const [tytul, setTytul] = useState("");
   const [rodzaj, setRodzaj] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Tutył: ${tytul}, Rodzaj: ${rodzaj}`);
+  };
   return (
-    <div className="App">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div className="container" style={{ padding: "20px" }}>
+      <h1>Dodaj film</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor='tytuł'>Tytuł filmu:</label>
+          <input 
+          type='text'
+          id='tytul'
+          className='form-control'
+          value={tytul}
+          onChange={(e)=>setTytul(e.target.value)}
+          />
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+        <div className='form-group'>
+          <label htmlFor='rodzaj'>Rodzaj filmu:</label>
+          <select
+          id='rodzaj'
+          className='form-control'
+          value={rodzaj}
+          onChange={(e)=>setRodzaj(e.target.value)}
+          >
+            <option id="">1</option>
+            <option id="1">2</option>
+            <option id="2">3</option>
+            <option id="3">4</option>
+            <option id="4">5</option>
+          </select>
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" className=""></button>
       </form>
     </div>
   );
 }
-
+ 
 export default App;
